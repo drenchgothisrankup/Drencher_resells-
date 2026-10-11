@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRENCHER RESELLS</title>
+    <title>DRENCHER_RESELLSS</title>
     <style>
-        /* Base Page Setup */
+        /* Base Styles matching your clean layout */
         body {
             margin: 0;
             padding: 0;
@@ -15,7 +15,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Top Header Bar Layout */
+        /* Top Header Navigation */
         header {
             display: flex;
             align-items: center;
@@ -37,7 +37,7 @@
             text-transform: uppercase;
         }
 
-        nav a {
+        .header-links a {
             color: #000000;
             text-decoration: none;
             margin-right: 25px;
@@ -47,7 +47,7 @@
             letter-spacing: 1px;
         }
 
-        nav a:hover {
+        .header-links a:hover {
             text-decoration: underline;
         }
 
@@ -72,25 +72,25 @@
             padding: 2px 6px;
         }
 
-        /* Hero Splash Banner layout */
+        /* Hero Main Section Banner */
         .hero-banner {
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px;
             background-color: #ffffff;
             border-bottom: 1px solid #eaeaea;
         }
 
         .hero-banner h1 {
-            font-size: 36px;
+            font-size: 38px;
             letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin: 0 0 15px 0;
         }
 
         .hero-banner p {
             color: #666666;
-            font-size: 15px;
-            margin-bottom: 30px;
+            font-size: 16px;
+            margin: 0 0 35px 0;
             letter-spacing: 1px;
         }
 
@@ -98,7 +98,7 @@
             background: #000000;
             color: #ffffff;
             text-decoration: none;
-            padding: 12px 35px;
+            padding: 14px 40px;
             font-weight: bold;
             font-size: 13px;
             text-transform: uppercase;
@@ -106,42 +106,47 @@
             display: inline-block;
         }
 
-        /* Main Workspace Framework */
-        .main-content {
-            padding: 40px;
+        /* Store Catalog Wrapper */
+        .store-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        .section-header {
-            font-size: 20px;
+        .section-headline {
+            font-size: 26px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin: 50px 0 25px 0;
-            border-bottom: 2px solid #000000;
-            padding-bottom: 8px;
+            margin: 40px 0 30px 0;
             font-weight: bold;
         }
 
-        .subsection-header {
-            font-size: 16px;
+        .category-block {
+            margin-bottom: 50px;
+        }
+
+        .category-headline {
+            font-size: 20px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 30px 0 15px 0;
-            color: #333333;
-            border-left: 3px solid #000000;
-            padding-left: 10px;
+            margin: 0 0 5px 0;
+            font-weight: bold;
         }
 
-        /* Item Grid Framework */
-        .item-grid {
+        .category-subtext {
+            font-size: 14px;
+            color: #666666;
+            margin: 0 0 20px 0;
+        }
+
+        /* Dynamic Product Grid */
+        .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 30px;
-            margin-bottom: 40px;
         }
 
-        .item-card {
+        .product-card {
             border: 1px solid #eeeeee;
             padding: 15px;
             display: flex;
@@ -150,25 +155,25 @@
             background: #ffffff;
         }
 
-        .item-card img {
+        .product-card img {
             width: 100%;
-            height: 260px;
+            height: 280px;
             object-fit: cover;
             background-color: #fcfcfc;
         }
 
-        .item-details {
+        .product-details {
             padding-top: 15px;
             font-size: 14px;
         }
 
-        .item-title {
+        .product-title {
             font-weight: bold;
             margin-bottom: 6px;
             font-size: 15px;
         }
 
-        .item-price {
+        .product-price {
             color: #000000;
             font-weight: bold;
             margin-bottom: 12px;
@@ -183,12 +188,12 @@
             background: #ffffff;
         }
 
-        .buy-action-btn {
+        .add-to-cart-action {
             width: 100%;
             background: #000000;
             color: #ffffff;
             border: none;
-            padding: 10px 0;
+            padding: 12px 0;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
@@ -196,12 +201,12 @@
             letter-spacing: 1px;
         }
 
-        .buy-action-btn:hover {
+        .add-to-cart-action:hover {
             background: #333333;
         }
 
-        /* Slide-out Drawer Cart Panel */
-        .cart-drawer {
+        /* Shopping Cart Right Drawer Panel */
+        .cart-drawer-panel {
             position: fixed;
             top: 0;
             right: -360px;
@@ -217,11 +222,11 @@
             box-sizing: border-box;
         }
 
-        .cart-drawer.active {
+        .cart-drawer-panel.active {
             right: 0;
         }
 
-        .close-drawer-btn {
+        .close-cart-btn {
             font-size: 30px;
             background: none;
             border: none;
@@ -230,13 +235,13 @@
             line-height: 1;
         }
 
-        .cart-items-container {
+        .cart-items-wrapper {
             flex-grow: 1;
             overflow-y: auto;
             margin-top: 25px;
         }
 
-        .cart-product-row {
+        .cart-item-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -246,7 +251,7 @@
             font-size: 14px;
         }
 
-        .remove-row-btn {
+        .remove-item-btn {
             background: none;
             border: none;
             color: #ff0000;
@@ -256,7 +261,7 @@
             font-size: 11px;
         }
 
-        .checkout-trigger-btn {
+        .checkout-now-btn {
             width: 100%;
             background: #e60000;
             color: #ffffff;
@@ -269,8 +274,8 @@
             letter-spacing: 1px;
         }
 
-        /* Payment Terminal Screen Pop-up */
-        .checkout-terminal-modal {
+        /* Payment Form Secure Overlay Modal */
+        .payment-modal-screen {
             position: fixed;
             top: 50%;
             left: 50%;
@@ -285,11 +290,11 @@
             box-sizing: border-box;
         }
 
-        .checkout-terminal-modal.active {
+        .payment-modal-screen.active {
             display: block;
         }
 
-        .apple-pay-element {
+        .apple-pay-btn-element {
             background: #000000;
             color: #ffffff;
             width: 100%;
@@ -303,11 +308,11 @@
             text-align: center;
         }
 
-        .input-block {
+        .form-input-block {
             margin-bottom: 14px;
         }
 
-        .input-block label {
+        .form-input-block label {
             display: block;
             font-size: 11px;
             font-weight: bold;
@@ -315,7 +320,7 @@
             text-transform: uppercase;
         }
 
-        .input-block input {
+        .form-input-block input {
             width: 100%;
             padding: 10px;
             border: 1px solid #cccccc;
@@ -323,7 +328,7 @@
             background: #ffffff;
         }
 
-        .execute-checkout-btn {
+        .submit-payment-action {
             width: 100%;
             background: #000000;
             color: #ffffff;
@@ -336,13 +341,14 @@
             letter-spacing: 1px;
         }
 
-        /* Contact Details section footer layout */
+        /* Business Contact Footer */
         footer {
             margin-top: 100px;
             padding: 60px 40px;
             background: #ffffff;
             border-top: 1px solid #eaeaea;
-            font-size: 14px;
+            font-size: 15px;
+            line-height: 1.8;
         }
 
         .footer-columns {
@@ -354,15 +360,15 @@
         }
 
         footer h2 {
-            font-size: 16px;
+            font-size: 18px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 20px;
+            margin: 0 0 20px 0;
+            font-weight: bold;
         }
 
         footer p {
             margin: 8px 0;
-            color: #333333;
         }
 
         footer a {
@@ -375,8 +381,8 @@
             text-decoration: underline;
         }
 
-        /* Screen Click Mask background overlay */
-        .click-mask-overlay {
+        /* Click Background Dark Mask overlay */
+        .background-click-mask {
             position: fixed;
             top: 0;
             left: 0;
@@ -386,11 +392,4 @@
             z-index: 150;
             display: none;
         }
-
-        .click-mask-overlay.active {
-            display: block;
-        }
-    </style>
-</head>
-<body>
 
