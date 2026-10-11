@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DRENCHER_RESELLSS</title>
+    <title>DRENCHER RESELLS</title>
     <style>
-        /* Base Minimalism Styles */
+        /* Base Page Setup */
         body {
             margin: 0;
             padding: 0;
@@ -15,120 +15,134 @@
             scroll-behavior: smooth;
         }
 
-        /* Top Header Area */
+        /* Top Header Bar Layout */
         header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 20px;
+            padding: 20px 40px;
             border-bottom: 1px solid #eaeaea;
             position: sticky;
             top: 0;
-            background: white;
+            background: #ffffff;
             z-index: 100;
         }
 
-        .brand-logo {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 8px 15px;
+        .brand-title {
             font-weight: bold;
-            font-size: 20px;
-            letter-spacing: 1px;
+            font-size: 24px;
+            letter-spacing: 2px;
             text-decoration: none;
+            color: #000000;
             text-transform: uppercase;
         }
 
         nav a {
             color: #000000;
             text-decoration: none;
-            margin: 0 15px;
+            margin-right: 25px;
             font-size: 14px;
             text-transform: uppercase;
             font-weight: bold;
+            letter-spacing: 1px;
         }
 
         nav a:hover {
             text-decoration: underline;
         }
 
-        .cart-icon-btn {
+        .cart-toggle-btn {
             background: none;
             border: none;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             text-transform: uppercase;
             cursor: pointer;
-            position: relative;
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .cart-count {
-            background: red;
-            color: white;
+        .cart-badge {
+            background: #ff0000;
+            color: #ffffff;
             font-size: 11px;
             border-radius: 50%;
             padding: 2px 6px;
-            margin-left: 5px;
         }
 
-        /* Hero Splash Banner Section */
+        /* Hero Splash Banner layout */
         .hero-banner {
-            background-color: #f7f7f7;
             text-align: center;
-            padding: 60px 20px;
+            padding: 80px 20px;
+            background-color: #ffffff;
             border-bottom: 1px solid #eaeaea;
         }
 
         .hero-banner h1 {
-            font-size: 32px;
-            letter-spacing: 2px;
+            font-size: 36px;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .hero-banner p {
-            color: #666;
+            color: #666666;
             font-size: 15px;
-            margin-bottom: 25px;
-        }
-
-        .hero-btn {
-            background: #000;
-            color: #fff;
-            text-decoration: none;
-            padding: 12px 30px;
-            font-weight: bold;
-            font-size: 13px;
-            text-transform: uppercase;
+            margin-bottom: 30px;
             letter-spacing: 1px;
         }
 
-        /* Main Website Layout Content */
-        .main-container {
-            padding: 20px;
+        .shop-now-btn {
+            background: #000000;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 35px;
+            font-weight: bold;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+        }
+
+        /* Main Workspace Framework */
+        .main-content {
+            padding: 40px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-title {
-            font-size: 18px;
+        .section-header {
+            font-size: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin: 40px 0 20px 0;
-            border-bottom: 2px solid #000;
-            padding-bottom: 5px;
+            margin: 50px 0 25px 0;
+            border-bottom: 2px solid #000000;
+            padding-bottom: 8px;
+            font-weight: bold;
         }
 
-        /* Grid Framework for Stock Display */
-        .product-grid {
+        .subsection-header {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 30px 0 15px 0;
+            color: #333333;
+            border-left: 3px solid #000000;
+            padding-left: 10px;
+        }
+
+        /* Item Grid Framework */
+        .item-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
-        .product-card {
-            border: 1px solid #eee;
+        .item-card {
+            border: 1px solid #eeeeee;
             padding: 15px;
             display: flex;
             flex-direction: column;
@@ -136,49 +150,40 @@
             background: #ffffff;
         }
 
-        .product-card img {
+        .item-card img {
             width: 100%;
-            height: 280px;
+            height: 260px;
             object-fit: cover;
-            background-color: #f7f7f7;
+            background-color: #fcfcfc;
         }
 
-        .product-info {
-            padding: 15px 0 0 0;
+        .item-details {
+            padding-top: 15px;
             font-size: 14px;
         }
 
-        .product-brand {
-            font-size: 12px;
-            text-transform: uppercase;
-            color: #888;
-            margin-bottom: 4px;
+        .item-title {
             font-weight: bold;
-        }
-
-        .product-name {
-            font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             font-size: 15px;
         }
 
-        .product-price {
+        .item-price {
             color: #000000;
             font-weight: bold;
-            margin-bottom: 15px;
-            font-size: 14px;
+            margin-bottom: 12px;
         }
 
-        .shipping-select {
+        .shipping-dropdown {
             width: 100%;
             padding: 8px;
             margin-bottom: 12px;
             font-size: 12px;
-            border: 1px solid #ccc;
-            background: #fff;
+            border: 1px solid #cccccc;
+            background: #ffffff;
         }
 
-        .add-to-cart-btn {
+        .buy-action-btn {
             width: 100%;
             background: #000000;
             color: #ffffff;
@@ -189,25 +194,24 @@
             text-transform: uppercase;
             font-size: 12px;
             letter-spacing: 1px;
-            transition: background 0.2s;
         }
 
-        .add-to-cart-btn:hover {
-            background: #333;
+        .buy-action-btn:hover {
+            background: #333333;
         }
 
-        /* Right-Side Sliding Shopping Cart Panel */
+        /* Slide-out Drawer Cart Panel */
         .cart-drawer {
             position: fixed;
             top: 0;
             right: -360px;
             width: 320px;
             height: 100%;
-            background: white;
+            background: #ffffff;
             box-shadow: -3px 0 10px rgba(0,0,0,0.1);
             z-index: 250;
             transition: right 0.3s ease;
-            padding: 25px;
+            padding: 30px 25px;
             display: flex;
             flex-direction: column;
             box-sizing: border-box;
@@ -217,67 +221,77 @@
             right: 0;
         }
 
-        .close-btn {
-            font-size: 28px;
+        .close-drawer-btn {
+            font-size: 30px;
             background: none;
             border: none;
             cursor: pointer;
             float: right;
+            line-height: 1;
         }
 
-        .cart-items-list {
+        .cart-items-container {
             flex-grow: 1;
             overflow-y: auto;
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
-        .cart-item {
+        .cart-product-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 15px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #eeeeee;
             padding-bottom: 12px;
             font-size: 14px;
         }
 
-        .checkout-btn {
+        .remove-row-btn {
+            background: none;
+            border: none;
+            color: #ff0000;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+
+        .checkout-trigger-btn {
             width: 100%;
             background: #e60000;
-            color: white;
+            color: #ffffff;
             border: none;
             padding: 14px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Integrated Checkout Terminal Overlay Modal */
-        .payment-modal {
+        /* Payment Terminal Screen Pop-up */
+        .checkout-terminal-modal {
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 90%;
-            <div class="main-container">
-
-            background: white;
-            padding: 25px;
+            max-width: 400px;
+            background: #ffffff;
+            padding: 30px 25px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             z-index: 300;
             display: none;
             box-sizing: border-box;
         }
 
-        .payment-modal.active {
+        .checkout-terminal-modal.active {
             display: block;
         }
 
-        .apple-pay-btn {
-            background: #000;
-            color: white;
+        .apple-pay-element {
+            background: #000000;
+            color: #ffffff;
             width: 100%;
             padding: 12px;
             font-weight: bold;
@@ -285,62 +299,74 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: center;
         }
 
-        .form-group {
-            margin-bottom: 12px;
+        .input-block {
+            margin-bottom: 14px;
         }
 
-        .form-group label {
+        .input-block label {
             display: block;
             font-size: 11px;
             font-weight: bold;
-            margin-bottom: 4px;
+            margin-bottom: 5px;
             text-transform: uppercase;
         }
 
-        .form-group input {
+        .input-block input {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
+            padding: 10px;
+            border: 1px solid #cccccc;
             box-sizing: border-box;
+            background: #ffffff;
         }
 
-        .submit-payment-btn {
+        .execute-checkout-btn {
             width: 100%;
-            background: #000;
-            color: white;
+            background: #000000;
+            color: #ffffff;
             padding: 12px;
             border: none;
             font-weight: bold;
             text-transform: uppercase;
             cursor: pointer;
             margin-top: 10px;
+            letter-spacing: 1px;
         }
 
-        /* Modular Footer and Business Info Contacts */
+        /* Contact Details section footer layout */
         footer {
-            margin-top: 80px;
-            padding: 40px 20px;
-            background: #fdfdfd;
+            margin-top: 100px;
+            padding: 60px 40px;
+            background: #ffffff;
             border-top: 1px solid #eaeaea;
             font-size: 14px;
-            line-height: 1.8;
         }
 
-        .footer-grid {
+        .footer-columns {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
             max-width: 1200px;
             margin: 0 auto;
-            text-align: left;
+        }
+
+        footer h2 {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        footer p {
+            margin: 8px 0;
+            color: #333333;
         }
 
         footer a {
-            color: #000;
+            color: #000000;
             font-weight: bold;
             text-decoration: none;
         }
@@ -349,8 +375,8 @@
             text-decoration: underline;
         }
 
-        /* Interactive Click Masking Layer */
-        .overlay {
+        /* Screen Click Mask background overlay */
+        .click-mask-overlay {
             position: fixed;
             top: 0;
             left: 0;
@@ -361,33 +387,10 @@
             display: none;
         }
 
-        .overlay.active {
+        .click-mask-overlay.active {
             display: block;
         }
     </style>
 </head>
 <body>
-
-    <!-- Dimmer Overlay Layer -->
-    <div class="overlay" id="overlay" onclick="closeAll()"></div>
-
-    <!-- Header Navigation Section -->
-    <header>
-        <a href="#" class="brand-logo">DRENCHER_RESELLSS</a>
-        <nav>
-            <a href="#featured">Shop</a>
-            <a href="#brands">Brands</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <button class="cart-icon-btn" onclick="toggleCart()">
-            Shopping Cart <span class="cart-count" id="cart-count">0</span>
-        </button>
-    </header>
-
-    <!-- Hero Promotional Banner -->
-    <div class="hero-banner">
-        <h1>DESIGNER STREETWEAR</h1>
-        <p>Authentic pieces. Clean fits. Resell-ready style.</p>
-        <a href="#featured" class="hero-btn">SHOP NOW</a>
-    </div>
 
