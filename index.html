@@ -1,138 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Drencher Resells</title>
-<!-- 🛒 This link loads the styling for your shopping cart popup -->
-<link rel="preconnect" href="https://snipcart.com">
-<link rel="preconnect" href="https://snipcart.com">
-<link rel="stylesheet" href="https://snipcart.com/themes/v3.4.1/default/snipcart.css" />
-<style>
-body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; background-color: #0b0b0b; color: #fff; }
-header { background-color: #000; color: #fff; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
-header h1 { margin: 0; font-size: 24px; letter-spacing: 2px; text-transform: uppercase; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Storefront</title>
+    <style>
+        /* Minimalist Reset & Layout */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
 
-/* 🛒 This is your interactive Shopping Cart Top Button */
-.snipcart-checkout { background-color: #fff; color: #000; border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; font-size: 16px; transition: background 0.2s; }
-.snipcart-checkout:hover { background-color: #cccccc; }
+        header {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #eaeaea;
+        }
 
-.container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-.product-card { background: #111; padding: 20px; border: 1px solid #222; text-align: center; display: flex; flex-direction: column; justify-content: space-between; }
-.product-card img { max-width: 100%; height: 250px; object-fit: cover; margin-bottom: 15px; background: #1a1a1a; }
-.price { font-size: 20px; font-weight: bold; color: #aaa; margin-bottom: 10px; }
+        /* Bold, clean logo design */
+        .brand-logo {
+            display: inline-block;
+            background-color: #000000;
+            color: #ffffff;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 24px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
 
-.size-selector { margin-bottom: 15px; }
-.size-selector select { background: #222; color: #fff; border: 1px solid #444; padding: 8px; width: 100%; font-weight: bold; }
+        .container {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
 
-/* 🖱️ This is the clickable Add to Cart Button */
-.buy-button { background-color: #fff; color: #000; border: none; padding: 12px; font-weight: bold; cursor: pointer; transition: background 0.2s; text-transform: uppercase; width: 100%; }
-.buy-button:hover { background-color: #cccccc; }
-</style>
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+        }
+
+        /* Sidebar Navigation */
+        nav {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        @media (min-width: 768px) {
+            nav {
+                width: 200px;
+                flex-shrink: 0;
+            }
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin-bottom: 10px;
+        }
+
+        nav ul li a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            flex-grow: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .product-card {
+            text-align: center;
+            border: 1px solid #transparent;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 8px 0;
+            font-size: 13px;
+            text-align: left;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .product-price {
+            color: #666666;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-<h1>Drencher Resells</h1>
-<!-- 🛒 Clicking this top button opens up the checkout side panel instantly -->
-<button class="snipcart-checkout">🛒 View Cart (<span class="snipcart-items-count">0</span>)</button>
-</header>
+    <header>
+        <a href="#" class="brand-logo">YOUR BRAND</a>
+    </header>
 
-<div class="container">
-<h2>Premium Denim ($150)</h2>
-<div class="products-grid">
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="#">New</a></li>
+                <li><a href="#">Jackets</a></li>
+                <li><a href="#">Shirts</a></li>
+                <li><a href="#">T-Shirts</a></li>
+                <li><a href="#">Hats</a></li>
+                <li><a href="#">Accessories</a></li>
+            </ul>
+        </nav>
 
-<!-- Amiri Jeans -->
-<div class="product-card">
-<img src="https://unsplash.com" alt="Amiri Jeans">
-<h3>Amiri Jeans</h3>
-<p class="price">$150.00</p>
-<div class="size-selector">
-<select onchange="this.parentElement.nextElementSibling.setAttribute('data-item-custom1-value', this.value)">
-<option value="28">Size 28</option><option value="29">Size 29</option><option value="30">Size 30</option>
-<option value="31">Size 31</option><option value="32">Size 32</option><option value="33">Size 33</option>
-</select>
-</div>
-<button class="buy-button snipcart-add-item" data-item-id="amiri-jeans" data-item-name="Amiri Jeans" data-item-price="150.00" data-item-url="/" data-item-custom1-name="Size" data-item-custom1-options="28|29|30|31|32|33" data-item-custom1-value="28">Add to Cart</button>
-</div>
+        <main class="product-grid">
+            <!-- Product Item 1 -->
+            <div class="product-card">
+                <img src="https://placeholder.com" alt="Product 1">
+                <div class="product-info">
+                    <div class="product-name">Item Name One</div>
+                    <div class="product-price">$48</div>
+                </div>
+            </div>
 
-<!-- Purple Jeans -->
-<div class="product-card">
-<img src="https://unsplash.com" alt="Purple Jeans">
-<h3>Purple Brand Jeans</h3>
-<p class="price">$150.00</p>
-<div class="size-selector">
-<select onchange="this.parentElement.nextElementSibling.setAttribute('data-item-custom1-value', this.value)">
-<option value="28">Size 28</option><option value="29">Size 29</option><option value="30">Size 30</option>
-<option value="31">Size 31</option><option value="32">Size 32</option><option value="33">Size 33</option>
-</select>
-</div>
-<button class="buy-button snipcart-add-item" data-item-id="purple-jeans" data-item-name="Purple Brand Jeans" data-item-price="150.00" data-item-url="/" data-item-custom1-name="Size" data-item-custom1-options="28|29|30|31|32|33" data-item-custom1-value="28">Add to Cart</button>
-</div>
+            <!-- Product Item 2 -->
+            <div class="product-card">
+                <img src="https://placeholder.com" alt="Product 2">
+                <div class="product-info">
+                    <div class="product-name">Item Name Two</div>
+                    <div class="product-price">$110</div>
+                </div>
+            </div>
 
-<!-- Ksubi Jeans -->
-<div class="product-card">
-<img src="https://unsplash.com" alt="Ksubi Jeans">
-<h3>Ksubi Jeans</h3>
-<p class="price">$150.00</p>
-<div class="size-selector">
-<select onchange="this.parentElement.nextElementSibling.setAttribute('data-item-custom1-value', this.value)">
-<option value="28">Size 28</option><option value="29">Size 29</option><option value="30">Size 30</option>
-<option value="31">Size 31</option><option value="32">Size 32</option><option value="33">Size 33</option>
-</select>
-</div>
-<button class="buy-button snipcart-add-item" data-item-id="ksubi-jeans" data-item-name="Ksubi Jeans" data-item-price="150.00" data-item-url="/" data-item-custom1-name="Size" data-item-custom1-options="28|29|30|31|32|33" data-item-custom1-value="28">Add to Cart</button>
-</div>
-</div>
+            <!-- Product Item 3 -->
+            <div class="product-card">
+                <img src="https://placeholder.com" alt="Product 3">
+                <div class="product-info">
+                    <div class="product-name">Item Name Three</div>
+                    <div class="product-price">$36</div>
+                </div>
+            </div>
 
-<br><br>
-<h2>T-Shirts & Headwear ($80)</h2>
-<div class="products-grid">
+            <!-- Product Item 4 -->
+            <div class="product-card">
+                <img src="https://placeholder.com" alt="Product 4">
+                <div class="product-info">
+                    <div class="product-name">Item Name Four</div>
+                    <div class="product-price">$148</div>
+                </div>
+            </div>
+        </main>
+    </div>
 
-<!-- Bape T-Shirt -->
-<div class="product-card">
-<img src="https://unsplash.com" alt="Bape T-Shirt">
-<h3>Bape T-Shirt</h3>
-<p class="price">$80.00</p>
-<div class="size-selector">
-<select onchange="this.parentElement.nextElementSibling.setAttribute('data-item-custom1-value', this.value)">
-<option value="S">Size S</option><option value="M">Size M</option><option value="L">Size L</option>
-</select>
-</div>
-<button class="buy-button snipcart-add-item" data-item-id="bape-tshirt" data-item-name="Bape T-Shirt" data-item-price="80.00" data-item-url="/" data-item-custom1-name="Size" data-item-custom1-options="S|M|L" data-item-custom1-value="S">Add to Cart</button>
-</div>
-
-<!-- Chrome Hearts T-Shirt -->
-<div class="product-card">
-<img src="https://unsplash.com" alt="Chrome Hearts T-Shirt">
-<h3>Chrome Hearts T-Shirt</h3>
-<p class="price">$80.00</p>
-<div class="size-selector">
-<select onchange="this.parentElement.nextElementSibling.setAttribute('data-item-custom1-value', this.value)">
-<option value="S">Size S</option><option value="M">Size M</option><option value="L">Size L</option>
-</select>
-</div>
-<button class="buy-button snipcart-add-item" data-item-id="chrome-hearts-tshirt" data-item-name="Chrome Hearts T-Shirt" data-item-price="80.00" data-item-url="/" data-item-custom1-name="Size" data-item-custom1-options="S|M|L" data-item-custom1-value="S">Add to Cart</button>
-</div>
-
-<!-- Supreme Beanie -->
-<div class="product-card">
-<img src="https://unsplash.com" alt="Supreme Beanie">
-<h3>Supreme Beanie</h3>
-<p class="price">$80.00</p>
-<div class="size-selector">
-<select onchange="this.parentElement.nextElementSibling.setAttribute('data-item-custom1-value', this.value)">
-<option value="S">Size S</option><option value="M">Size M</option><option value="L">Size L</option>
-</select>
-</div>
-<button class="buy-button snipcart-add-item" data-item-id="supreme-beanie" data-item-name="Supreme Beanie" data-item-price="80.00" data-item-url="/" data-item-custom1-name="Size" data-item-custom1-options="S|M|L" data-item-custom1-value="S">Add to Cart</button>
-</div>
-</div>
-</div>
-
-<!-- 🌐 This background script drives the interactive cart functionality -->
-<script async src="https://snipcart.com/themes/v3.4.1/default/snipcart.js"></script>
-<div hidden id="snipcart" data-api-key="NDY3N2I0ZTctMzA0ZC00NzI5LTg2ZjUtM2VjYmYzYTRmYTU0NjM4NjM2NzgyNTMxMDY1ODg4"></div>
 </body>
 </html>
