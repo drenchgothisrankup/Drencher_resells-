@@ -1,4 +1,388 @@
-<!DOCTYPE html>
+< !<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drench Resales</title>
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Header Navigation */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            border-bottom: 1px solid #eaeaea;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .menu-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .brand-logo {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 20px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .cart-icon-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: red;
+            color: white;
+            font-size: 11px;
+            border-radius: 50%;
+            padding: 2px 6px;
+        }
+
+        /* Sliding Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -260px;
+            width: 220px;
+            height: 100%;
+            background: #ffffff;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            z-index: 200;
+            transition: left 0.3s ease;
+            padding: 20px;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .close-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            float: right;
+            margin-bottom: 20px;
+        }
+
+        .sidebar h3 {
+            margin-top: 40px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+
+        .sidebar ul li a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        /* Product Layout Grid */
+        .main-container {
+            padding: 20px;
+        }
+
+        .category-title {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 30px 0 15px 0;
+            border-bottom: 2px solid #000;
+            padding-bottom: 5px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #eee;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background-color: #f7f7f7;
+        }
+
+        .product-info {
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .shipping-select {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            background: #000000;
+            color: #ffffff;
+            border: none;
+            padding: 8px 0;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 12px;
+        }
+
+        .add-to-cart-btn:hover {
+            background: #333;
+        }
+
+        /* Shopping Cart Slide-out Drawer */
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -350px;
+            width: 300px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            z-index: 200;
+            transition: right 0.3s ease;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-drawer.active {
+            right: 0;
+        }
+
+        .cart-items-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #e60000;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+        /* Payment Gateway Modal */
+        .payment-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 300;
+            display: none;
+            box-sizing: border-box;
+        }
+
+        .payment-modal.active {
+            display: block;
+        }
+
+        .apple-pay-btn {
+            background: #000;
+            color: white;
+            width: 100%;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .submit-payment-btn {
+            width: 100%;
+            background: #000;
+            color: white;
+            padding: 10px;
+            border: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        /* Social Footer */
+        footer {
+            margin-top: 60px;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #eaeaea;
+            background: #fdfdfd;
+        }
+
+        footer a {
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            z-index: 150;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="header-left">
+            <button class="menu-btn" onclick="toggleSidebar()">&#9776;</button>
+            <a href="#" class="brand-logo">Drench Resales</a>
+        </div>
+        <button class="cart-icon-btn" onclick="toggleCart()">
+            🛒 <span class="cart-count" id="cart-count">0</span>
+        </button>
+    </header>
+
+    <!-- Navigation Sidebar Drawer -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">&times;</button>
+        <h3>Categories</h3>
+        <ul>
+            <li><a href="#hats" onclick="toggleSidebar()">Hats</a></li>
+            <li><a href="#jeans" onclick="toggleSidebar()">Jeans</a></li>
+            <li><a href="#tshirts" onclick="toggleSidebar()">T-Shirts</a></li>
+            <li><a href="#jackets" onclick="toggleSidebar()">Jackets</a></li>
+            <li><a href="#accessories" onclick="toggleSidebar()">Accessories</a></li>
+        </ul>
+    </div>
+
+    <!-- Shopping Cart Drawer -->
+    <div class="cart-drawer" id="cart-drawer">
+        <button class="close-btn" onclick="toggleCart()">&times;</button>
+        <h2>Your Cart</h2>
+        <div class="cart-items-list" id="cart-items-list"></div>
+        <div style="margin-bottom: 15px; font-weight: bold; font-size: 18px;">
+            Total: $<span id="cart-total">0</span>
+        </div>
+        <button class="checkout-btn" onclick="openPaymentModal()">Proceed to Buy</button>
+    </div>
+
+    <!-- Payment Gateway Interface Form (Apple Pay & Cards) -->
+    <div class="payment-modal" id="payment-modal">
+        <button class="close-btn" onclick="closePaymentModal()">&times;</button>
+        <h2>Checkout</h2>
+        
+DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
