@@ -58,6 +58,7 @@
             font-size: 20px;
             cursor: pointer;
             position: relative;
+            z-index: 110;
         }
 
         .cart-count {
@@ -128,6 +129,8 @@
         /* Product Layout Grid */
         .main-container {
             padding: 20px;
+            position: relative;
+            z-index: 10;
         }
 
         .category-title {
@@ -151,6 +154,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            background: #ffffff;
         }
 
         .product-card img {
@@ -202,11 +206,12 @@
             height: 100%;
             background: white;
             box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-            z-index: 200;
+            z-index: 250;
             transition: right 0.3s ease;
             padding: 25px;
             display: flex;
             flex-direction: column;
+            box-sizing: border-box;
         }
 
         .cart-drawer.active {
@@ -227,18 +232,6 @@
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
             font-size: 14px;
-        }
-
-        .checkout-btn {
-            width: 100%;
-            background: #e60000;
-            color: white;
-            border: none;
-            padding: 12px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
         }
 
         /* Payment Gateway Modal */
@@ -377,8 +370,10 @@
         <button class="checkout-btn" onclick="openPaymentModal()">Proceed to Buy</button>
     </div>
 
-    <!-- Payment Gateway Interface Form (Apple Pay & Cards) -->
+    <!-- Payment Gateway Interface Form -->
     <div class="payment-modal" id="payment-modal">
         <button class="close-btn" onclick="closePaymentModal()">&times;</button>
         <h2>Checkout</h2>
+        
+        <button class="apple-pay-btn" onclick="processPayment('Apple Pay')"> Pay with Apple Pay</button>
         
