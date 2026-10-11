@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drench Resales</title>
+    <title>DRENCHER_RESELLSS</title>
     <style>
-        /* Base Styles */
+        /* Base Minimalism Styles */
         body {
             margin: 0;
             padding: 0;
             font-family: Arial, sans-serif;
             background-color: #ffffff;
             color: #000000;
+            scroll-behavior: smooth;
         }
 
-        /* Header Navigation */
+        /* Top Header Area */
         header {
             display: flex;
             align-items: center;
@@ -25,20 +26,6 @@
             top: 0;
             background: white;
             z-index: 100;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .menu-btn {
-            font-size: 24px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
         }
 
         .brand-logo {
@@ -52,105 +39,97 @@
             text-transform: uppercase;
         }
 
+        nav a {
+            color: #000000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
         .cart-icon-btn {
             background: none;
             border: none;
-            font-size: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
             cursor: pointer;
             position: relative;
-            z-index: 110;
+            letter-spacing: 1px;
         }
 
         .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -10px;
             background: red;
             color: white;
             font-size: 11px;
             border-radius: 50%;
             padding: 2px 6px;
+            margin-left: 5px;
         }
 
-        /* Sliding Sidebar Navigation */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: -260px;
-            width: 220px;
-            height: 100%;
-            background: #ffffff;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-            z-index: 200;
-            transition: left 0.3s ease;
-            padding: 20px;
+        /* Hero Splash Banner Section */
+        .hero-banner {
+            background-color: #f7f7f7;
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 1px solid #eaeaea;
         }
 
-        .sidebar.active {
-            left: 0;
+        .hero-banner h1 {
+            font-size: 32px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
         }
 
-        .close-btn {
-            font-size: 24px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            float: right;
-            margin-bottom: 20px;
+        .hero-banner p {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 25px;
         }
 
-        .sidebar h3 {
-            margin-top: 40px;
-            font-size: 14px;
+        .hero-btn {
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 30px;
+            font-weight: bold;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-bottom: 1px solid #000;
-            padding-bottom: 5px;
         }
 
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .sidebar ul li {
-            margin: 15px 0;
-        }
-
-        .sidebar ul li a {
-            color: #000000;
-            text-decoration: none;
-            font-size: 15px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        /* Product Layout Grid */
+        /* Main Website Layout Content */
         .main-container {
             padding: 20px;
-            position: relative;
-            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .category-title {
-            font-size: 16px;
+        .section-title {
+            font-size: 18px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 30px 0 15px 0;
+            letter-spacing: 2px;
+            margin: 40px 0 20px 0;
             border-bottom: 2px solid #000;
             padding-bottom: 5px;
         }
 
+        /* Grid Framework for Stock Display */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
         }
 
         .product-card {
             border: 1px solid #eee;
-            padding: 10px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -159,26 +138,44 @@
 
         .product-card img {
             width: 100%;
-            height: 250px;
+            height: 280px;
             object-fit: cover;
             background-color: #f7f7f7;
         }
 
         .product-info {
-            padding: 10px 0;
+            padding: 15px 0 0 0;
             font-size: 14px;
+        }
+
+        .product-brand {
+            font-size: 12px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 4px;
+            font-weight: bold;
         }
 
         .product-name {
             font-weight: bold;
             margin-bottom: 5px;
+            font-size: 15px;
+        }
+
+        .product-price {
+            color: #000000;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 14px;
         }
 
         .shipping-select {
             width: 100%;
-            padding: 5px;
-            margin-bottom: 10px;
+            padding: 8px;
+            margin-bottom: 12px;
             font-size: 12px;
+            border: 1px solid #ccc;
+            background: #fff;
         }
 
         .add-to-cart-btn {
@@ -186,26 +183,28 @@
             background: #000000;
             color: #ffffff;
             border: none;
-            padding: 8px 0;
+            padding: 10px 0;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
             font-size: 12px;
+            letter-spacing: 1px;
+            transition: background 0.2s;
         }
 
         .add-to-cart-btn:hover {
             background: #333;
         }
 
-        /* Shopping Cart Slide-out Drawer */
+        /* Right-Side Sliding Shopping Cart Panel */
         .cart-drawer {
             position: fixed;
             top: 0;
-            right: -350px;
-            width: 300px;
+            right: -360px;
+            width: 320px;
             height: 100%;
             background: white;
-            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+            box-shadow: -3px 0 10px rgba(0,0,0,0.1);
             z-index: 250;
             transition: right 0.3s ease;
             padding: 25px;
@@ -216,6 +215,14 @@
 
         .cart-drawer.active {
             right: 0;
+        }
+
+        .close-btn {
+            font-size: 28px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            float: right;
         }
 
         .cart-items-list {
@@ -230,11 +237,24 @@
             align-items: center;
             margin-bottom: 15px;
             border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
             font-size: 14px;
         }
 
-        /* Payment Gateway Modal */
+        .checkout-btn {
+            width: 100%;
+            background: #e60000;
+            color: white;
+            border: none;
+            padding: 14px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Integrated Checkout Terminal Overlay Modal */
         .payment-modal {
             position: fixed;
             top: 50%;
@@ -244,7 +264,7 @@
             max-width: 400px;
             background: white;
             padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             z-index: 300;
             display: none;
             box-sizing: border-box;
@@ -274,7 +294,7 @@
 
         .form-group label {
             display: block;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
             margin-bottom: 4px;
             text-transform: uppercase;
@@ -291,7 +311,7 @@
             width: 100%;
             background: #000;
             color: white;
-            padding: 10px;
+            padding: 12px;
             border: none;
             font-weight: bold;
             text-transform: uppercase;
@@ -299,13 +319,23 @@
             margin-top: 10px;
         }
 
-        /* Social Footer */
+        /* Modular Footer and Business Info Contacts */
         footer {
-            margin-top: 60px;
-            padding: 30px;
-            text-align: center;
-            border-top: 1px solid #eaeaea;
+            margin-top: 80px;
+            padding: 40px 20px;
             background: #fdfdfd;
+            border-top: 1px solid #eaeaea;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
         }
 
         footer a {
@@ -314,7 +344,11 @@
             text-decoration: none;
         }
 
-        /* Overlay */
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Interactive Click Masking Layer */
         .overlay {
             position: fixed;
             top: 0;
@@ -333,47 +367,26 @@
 </head>
 <body>
 
+    <!-- Dimmer Overlay Layer -->
     <div class="overlay" id="overlay" onclick="closeAll()"></div>
 
-    <!-- Header Navigation -->
+    <!-- Header Navigation Section -->
     <header>
-        <div class="header-left">
-            <button class="menu-btn" onclick="toggleSidebar()">&#9776;</button>
-            <a href="#" class="brand-logo">Drench Resales</a>
-        </div>
+        <a href="#" class="brand-logo">DRENCHER_RESELLSS</a>
+        <nav>
+            <a href="#featured">Shop</a>
+            <a href="#brands">Brands</a>
+            <a href="#contact">Contact</a>
+        </nav>
         <button class="cart-icon-btn" onclick="toggleCart()">
-            🛒 <span class="cart-count" id="cart-count">0</span>
+            Shopping Cart <span class="cart-count" id="cart-count">0</span>
         </button>
     </header>
 
-    <!-- Navigation Sidebar Drawer -->
-    <div class="sidebar" id="sidebar">
-        <button class="close-btn" onclick="toggleSidebar()">&times;</button>
-        <h3>Categories</h3>
-        <ul>
-            <li><a href="#hats" onclick="toggleSidebar()">Hats</a></li>
-            <li><a href="#jeans" onclick="toggleSidebar()">Jeans</a></li>
-            <li><a href="#tshirts" onclick="toggleSidebar()">T-Shirts</a></li>
-            <li><a href="#jackets" onclick="toggleSidebar()">Jackets</a></li>
-            <li><a href="#accessories" onclick="toggleSidebar()">Accessories</a></li>
-        </ul>
+    <!-- Hero Promotional Banner -->
+    <div class="hero-banner">
+        <h1>DESIGNER STREETWEAR</h1>
+        <p>Authentic pieces. Clean fits. Resell-ready style.</p>
+        <a href="#featured" class="hero-btn">SHOP NOW</a>
     </div>
 
-    <!-- Shopping Cart Drawer -->
-    <div class="cart-drawer" id="cart-drawer">
-        <button class="close-btn" onclick="toggleCart()">&times;</button>
-        <h2>Your Cart</h2>
-        <div class="cart-items-list" id="cart-items-list"></div>
-        <div style="margin-bottom: 15px; font-weight: bold; font-size: 18px;">
-            Total: $<span id="cart-total">0</span>
-        </div>
-        <button class="checkout-btn" onclick="openPaymentModal()">Proceed to Buy</button>
-    </div>
-
-    <!-- Payment Gateway Interface Form -->
-    <div class="payment-modal" id="payment-modal">
-        <button class="close-btn" onclick="closePaymentModal()">&times;</button>
-        <h2>Checkout</h2>
-        
-        <button class="apple-pay-btn" onclick="processPayment('Apple Pay')"> Pay with Apple Pay</button>
-        
